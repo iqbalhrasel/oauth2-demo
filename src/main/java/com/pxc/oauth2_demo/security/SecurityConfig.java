@@ -26,7 +26,9 @@ public class SecurityConfig {
                 .requestMatchers("/hello").permitAll()
                 .anyRequest()
                 .authenticated());
-        http.oauth2Login(Customizer.withDefaults());
+//        http.oauth2Login(Customizer.withDefaults());
+        http.oauth2Login(oa -> oa
+                .defaultSuccessUrl("http://localhost:5173", true));
         return http.build();
     }
 
